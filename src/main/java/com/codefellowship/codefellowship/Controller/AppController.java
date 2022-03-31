@@ -16,58 +16,45 @@ public class AppController {
     Services services;
 
 
-    @GetMapping("/home")
-    public String Home( ) {
+    @GetMapping("/")
+    public String Home() {
         return "Home";
     }
+
     @GetMapping("/login")
-    String LoginPage(){
+    String LoginPage() {
         return "loginPage";
 
     }
 
     @GetMapping("/signUp")
-    String signUpPage(){
+    String signUpPage() {
         return "signUpPage";
     }
-    @GetMapping("/")
-    String userPage(Model model){
+
+    @GetMapping("/home")
+    String userPage(Model model) {
         return "userPage";
     }
 
     @PostMapping("/login_form")
-    String LogFormPage(@RequestParam String userName ,@RequestParam  String password){
+    String LogFormPage(@RequestParam String userName, @RequestParam String password) {
         return "userPage";
     }
 
-//    @PostMapping("/sign_form")
-//    String signUpForm(@RequestParam String username,@RequestParam String password ,@RequestParam String firstName ,@RequestParam String lastName ,@RequestParam String dateOfBirth,@RequestParam String bio , Model model){
-//        if (services.addNewUser(username,password,firstName,lastName,dateOfBirth,bio,model))return "userPage";
-//        return "signUpPage";
-//    }
 
     @ModelAttribute("AppUser")
     public AppUser userRegistrationDto() {
-        return new AppUser() ;
-
-        }
+        return new AppUser();
+    }
 
     @PostMapping("/signUp")
-    String signUpForm(@ModelAttribute("AppUser") AppUser user){
-
-        if (services.addUser(user)){
+    String signUpForm(@ModelAttribute("AppUser") AppUser user) {
+        if (services.addUser(user)) {
 
             return "redirect:/login?success";
         }
-
-
-
         return "redirect:/signUp?error";
     }
-
-//    @PostMapping("/Log_form")
-//    String LogFormPage(@RequestParam String userName ,@RequestParam  String password){
-//        return "userPage";
-//    }
 
 }
