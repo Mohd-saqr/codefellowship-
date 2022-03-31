@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home page</title>
@@ -19,7 +19,7 @@
             crossorigin="anonymous"></script>
 
 </head>
-<body  style="background-image: url('https://c4.wallpaperflare.com/wallpaper/445/790/539/hacking-hackers-wallpaper-preview.jpg')">
+<body >
 <header>
     <!-- Intro settings -->
     <style>
@@ -37,7 +37,7 @@
   </style>
 
 
-    <nav class="navbar navbar-expand-lg navbar-white bg-black">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <button
                     class="navbar-toggler"
@@ -57,51 +57,59 @@
                     </li>
 
                 </ul>
+
+
+                <form class="d-flex" action="/logOut" method="post">
+                    <span class="navbar-text"sec:authentication="principal.user.username" style="margin:10px"> </span>
+                    <button class="btn btn-outline-success me-2" type="submit">Log Out</button>
+                </form>
+
             </div>
         </div>
     </nav>
 
-    <div
-            id="intro-example"
-            class="p-5 text-center bg-image"
 
-
-    >
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white">
-                    <h1 class="mb-3" style="color:red;">Hello World</h1>
-                    <h5 class="mb-4">Login to share post or sign Up if didn't have account  </h5>
-                    <a
-                            class="btn btn-outline-light btn-lg m-2"
-                            href="/LoginPage"
-                            role="button"
-                            rel="nofollow"
-                            aria-expanded="false"
-                            aria-current="page"
-                    >Login</a
-                    >
-                    <a
-                            class="btn btn-outline-light btn-lg m-2"
-                            href="/SignPage"
-                            role="button"
-                            aria-current="page"
-                    >Sign Up</a
-                    >
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 </header>
 
 
 
+<div class="d-flex justify-content-center align-items-center h-100">
+
+    <table class="table">
+        <thead class="table-light">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">username</th>
+            <th scope="col">first Name</th>
+            <th scope="col"> last Name</th>
+            <th scope="col">length</th>
+            <th scope="col">date Of Birth</th>
+            <th scope="col">bio</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+            <td sec:authentication="principal.user.id" ></td>
+            <td sec:authentication="principal.user.username"></td>
+            <td sec:authentication="principal.user.firstName"></td>
+            <td sec:authentication="principal.user.lastName"></td>
+            <td sec:authentication="principal.user.firstName"></td>
+            <td sec:authentication="principal.user.dateOfBirth"></td>
+            <td sec:authentication="principal.user.bio"></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+
+</div>
+
 
 
 </body>
-
-
 </html>

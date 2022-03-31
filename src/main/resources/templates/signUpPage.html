@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarExample01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" aria-current="page" href="/home">Home</a>
                     </li>
                 </ul>
             </div>
@@ -40,23 +40,42 @@
 
 
 </header>
-
+<div th:if="${param.error}">
+    <div class="alert alert-danger">use name has taken
+        .</div>
+</div>
 
 <div class="row row-md-2 justify-content-center align-items-center " style="margin:100px;">
     <h1>Sign Up</h1>
     <h3>--------------------------------------------------------------------------------</h3>
-    <form action="/Sign" method="post">
+    <form action="/signUp" method="post" th:object ="${AppUser}">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label" >User Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{username}" required>
 
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+            <label for="Password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="Password" th:field="*{password}" required>
+        </div>
+        <div class="mb-3">
+            <label for="firstName" class="form-label">firstName</label>
+            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">lastName</label>
+            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateOfBirth" class="form-label">dateOfBirth</label>
+            <input type="text" class="form-control" id="dateOfBirth" th:field="*{dateOfBirth}" required>
+        </div>
+        <div class="mb-3">
+            <label for="bio" class="form-label">bio</label>
+            <input type="text" class="form-control" id="bio" th:field="*{bio}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">sign Up</button>
     </form>
 </div>
 

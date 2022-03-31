@@ -21,6 +21,8 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity3', version: '2.1.1.RELEASE'
+
 
 }
 

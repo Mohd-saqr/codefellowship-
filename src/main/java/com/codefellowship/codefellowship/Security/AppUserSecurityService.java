@@ -1,6 +1,7 @@
-package SecurityoUT;
+package com.codefellowship.codefellowship.Security;
 
-import Repo_User.AppUserRepo;
+import com.codefellowship.codefellowship.Mod_user.AppUser;
+import com.codefellowship.codefellowship.Repo_User.AppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +14,10 @@ public class AppUserSecurityService implements UserDetailsService {
     AppUserRepo appUserRepo;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return appUserRepo.findByUserName(username);
+        AppUser user =appUserRepo.findByusername(username);
+        if (user!=null){
+            return new UserDetailsShow(user);
+        }
+        return null;
     }
 }
