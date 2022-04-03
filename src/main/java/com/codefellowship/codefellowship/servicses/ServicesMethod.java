@@ -1,6 +1,5 @@
 package com.codefellowship.codefellowship.servicses;
 
-import com.codefellowship.codefellowship.Mod_user.AppUser;
 import org.springframework.ui.Model;
 
 public interface ServicesMethod {
@@ -10,3 +9,5 @@ public interface ServicesMethod {
                     String bio, Model model);
 
 }
+
+

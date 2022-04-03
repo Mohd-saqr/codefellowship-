@@ -1,12 +1,17 @@
 package com.codefellowship.codefellowship.servicses;
 
-import com.codefellowship.codefellowship.Mod_user.AppUser;
+import com.codefellowship.codefellowship.Modul_App.AppUser;
+import com.codefellowship.codefellowship.Modul_App.Posts;
+import com.codefellowship.codefellowship.Repo_User.AppPostsRepo;
 import com.codefellowship.codefellowship.Repo_User.AppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class Services implements ServicesMethod{
@@ -14,6 +19,8 @@ public class Services implements ServicesMethod{
     AppUserRepo appUserRepo;
     @Autowired
     PasswordEncoder encoder;
+    @Autowired
+    AppPostsRepo appPostsRepo;
     @Override
     public boolean addNewUser( String username,  String password ,
                             String firstName ,
@@ -33,5 +40,43 @@ public class Services implements ServicesMethod{
         AppUser user1 = new AppUser(user.getUsername(),encoder.encode(user.getPassword()),user.getFirstName(),user.getLastName(),user.getDateOfBirth(),user.getBio());
         appUserRepo.save(user1);
         return true;
+    }
+
+@Transactional
+   public void AddPosts(String body ,Long id){
+        AppUser user = appUserRepo.getById(id);
+        Posts post = new Posts(body);
+        user.getPosts().add(post);
+        appUserRepo.save(user);
+
+    }
+
+    @Transactional
+    public  boolean addLikes(Long postID){
+       Posts post = appPostsRepo.getById(postID);
+       post.setLikes(post.getLikes()+1);
+       return true;
+    }
+    public List<AppUser> getAllUser(Model model){
+      List<AppUser> users=  appUserRepo.findAll();
+      List<AppUser> usersHavePosts= new ArrayList<>();
+        for (AppUser user:users) {
+            if (user.getPosts().size()!=0){
+                usersHavePosts.add(user);
+            }
+        }
+        model.addAttribute("users",usersHavePosts);
+      return users;
+    }
+
+    public void findUser(Long id , Model model) {
+        model.addAttribute("user",appUserRepo.getById(id));
+
+    }
+
+    public void findUserByUserName(String userName, Model model) {
+
+
+
     }
 }

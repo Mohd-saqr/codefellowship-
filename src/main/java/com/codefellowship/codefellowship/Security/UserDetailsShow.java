@@ -1,19 +1,21 @@
 package com.codefellowship.codefellowship.Security;
 
-import com.codefellowship.codefellowship.Mod_user.AppUser;
+import com.codefellowship.codefellowship.Modul_App.AppUser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+
 public class UserDetailsShow implements UserDetails {
 
-    private  AppUser user;
+    private AppUser user;
 
     public UserDetailsShow(AppUser user) {
         this.user = user;
     }
-@Bean
+
+    @Bean
     public AppUser getUser() {
         return user;
     }
@@ -33,7 +35,7 @@ public class UserDetailsShow implements UserDetails {
         return user.getUsername();
     }
 
-    public String getFirstname(){
+    public String getFirstname() {
         return user.getFirstName();
     }
 

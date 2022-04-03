@@ -2,83 +2,145 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://kit.fontawesome.com/8182f6166d.js" crossorigin="anonymous"></script>
+    <script src="/jsHelper.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
-<body >
+<body>
 <header>
+    <nav class="navbar is-link" role="navigation" aria-label="main navigation">
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#navbarExample01"
-                    aria-controls="navbarExample01"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarExample01">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
-                    </li>
-                </ul>
+
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="/aboutUs">
+                    About Us
+                </a>
+
+
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/signUp">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/login">
+                            Log in
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
-
-
-
-
 </header>
-<div th:if="${param.error}">
-    <div class="alert alert-danger">username has taken please try with another one
-        .</div>
-</div>
 
-<div class="row row-md-2 justify-content-center align-items-center " style="margin:100px;">
-    <h1>Sign Up</h1>
-    <h3>--------------------------------------------------------------------------------</h3>
-    <form action="/signUp" method="post" th:object ="${AppUser}">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label" >User Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{username}" required>
+<section class="section  is-small is-justify-content-center">
+    <h1 class="title">Sign Up</h1>
+    <hr>
+    <div class="content">
+        <form action="/signUp" method="post" th:object="${AppUser}">
+            <div class="field" >
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="username" required th:field="*{username}">
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-user"></i>
+                      </span>
 
-        </div>
-        <div class="mb-3">
-            <label for="Password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="Password" th:field="*{password}" required>
-        </div>
-        <div class="mb-3">
-            <label for="firstName" class="form-label">firstName</label>
-            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
-        </div>
-        <div class="mb-3">
-            <label for="lastName" class="form-label">lastName</label>
-            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
-        </div>
-        <div class="mb-3">
-            <label for="dateOfBirth" class="form-label">dateOfBirth</label>
-            <input type="text" class="form-control" id="dateOfBirth" th:field="*{dateOfBirth}" required>
-        </div>
-        <div class="mb-3">
-            <label for="bio" class="form-label">bio</label>
-            <input type="text" class="form-control" id="bio" th:field="*{bio}" required>
-        </div>
+                </p>
+            </div>
+            <div class="field" >
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="firstName" required th:field="*{firstName}">
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-user"></i>
+                      </span>
 
-        <button type="submit" class="btn btn-primary">sign Up</button>
-    </form>
-</div>
+                </p>
+            </div>
+            <div class="field" >
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="lastName" required th:field="*{lastName}">
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-user"></i>
+                      </span>
 
+                </p>
+            </div>
+            <div class="field" >
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="date" value="2021-04-03" required th:field="*{dateOfBirth}">
+                    <span class="icon is-small is-left">
+                      <i class="fa-solid fa-calendar-check"></i>
+                         </span>
 
+                </p>
+            </div>
+            <div class="field" >
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="bio" required th:field="*{bio}">
+                    <span class="icon is-small is-left">
+                      <i class="fa-regular fa-comment-dots"></i>
+                      </span>
+
+                </p>
+            </div>
+            <div class="field" >
+                <p class="control has-icons-left">
+                    <input class="input" type="password" id='password' placeholder="Password"  required  th:field="*{password}">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                </p>
+            </div>
+            <div class="field" >
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="password" id='confirm_password' placeholder="Repeat-Password"  required oninput='check_pass();'>
+                    <span class="icon is-small is-right is-hidden" id="ok_span">
+                        <i class="fa-solid fa-xmark is-hidden " id='ok'></i>
+
+                      </span>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                </p>
+
+            </div>
+
+            <button class="button is-info is-active" type="submit" id="submit">Sign Up</button>
+        </form>
+    </div>
+    <article class="message is-danger" th:if="${param.error}">
+        <div class="message-header">
+            <p>Error</p>
+            <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+            <strong > username was taken pleas try to another one.
+                </strong>
+        </div>
+    </article>
+</section>
+<script>
+  flatpickr("input[type=date]", {});
+</script>
 </body>
 </html>

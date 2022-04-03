@@ -1,6 +1,6 @@
 package com.codefellowship.codefellowship.Security;
 
-import com.codefellowship.codefellowship.Mod_user.AppUser;
+import com.codefellowship.codefellowship.Modul_App.AppUser;
 import com.codefellowship.codefellowship.Repo_User.AppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

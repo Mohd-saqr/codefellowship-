@@ -1,23 +1,31 @@
-package com.codefellowship.codefellowship.Mod_user;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+package com.codefellowship.codefellowship.Modul_App;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
+
 
 @Entity
-public class AppUser  {
+public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true )
+    @Column(unique = true)
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
     private String bio;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Posts> posts;
+
+    public List<Posts> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Posts> posts) {
+        this.posts = posts;
+    }
 
     public String getUsername() {
         return username;
