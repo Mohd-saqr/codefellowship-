@@ -16,11 +16,32 @@ public class AppUser {
     private String lastName;
     private String dateOfBirth;
     private String bio;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Posts> posts;
-
+    @ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+   @JoinTable(name = "FollowTable" ,joinColumns = {@JoinColumn(name = "followingId")},
+   inverseJoinColumns = {@JoinColumn(name = "followerId")})
+    private List<AppUser> following;
+    @ManyToMany(cascade = CascadeType.ALL ,mappedBy ="following" ,fetch = FetchType.EAGER)
+    private List<AppUser>follower;
     public List<Posts> getPosts() {
         return posts;
+    }
+
+    public List<AppUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(List<AppUser> following) {
+        this.following = following;
+    }
+
+    public List<AppUser> getFollower() {
+        return follower;
+    }
+
+    public void setFollower(List<AppUser> follower) {
+        this.follower = follower;
     }
 
     public void setPosts(List<Posts> posts) {

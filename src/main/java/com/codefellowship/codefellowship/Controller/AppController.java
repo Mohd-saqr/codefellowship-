@@ -1,11 +1,10 @@
 package com.codefellowship.codefellowship.Controller;
-
 import com.codefellowship.codefellowship.Modul_App.AppUser;
-import com.codefellowship.codefellowship.Modul_App.Posts;
 import com.codefellowship.codefellowship.servicses.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -99,5 +98,17 @@ public class AppController {
         return "userPageInfo";
     }
 
+    @GetMapping("/follow/{userid}/{personId}")
+    String follow(@PathVariable Long userid ,@PathVariable Long personId ,Model model){
+        if (services.followUser(userid,personId,model)) return "redirect:/home";
+        return "redirect:/home?err";
+    }
+     @Transactional
+    @GetMapping("/feed")
+    String PageFriend(Authentication authentication,Model model){
+        model.addAttribute("user",authentication.getPrincipal());
+        authentication.
+       return "feed";
+    }
 
 }

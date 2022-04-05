@@ -79,4 +79,24 @@ public class Services implements ServicesMethod{
 
 
     }
+    @Transactional
+    public boolean followUser(Long userid, Long personId, Model model) {
+      AppUser user=  appUserRepo.getById(userid);
+      AppUser person =appUserRepo.getById(personId);
+      if (user.getFollowing().contains(person))return false;
+      user.getFollowing().add(person);
+      person.getFollower().add(user);
+      appUserRepo.save(user);
+      appUserRepo.save(person);
+      return true;
+    }
+
+
+    public List<AppUser> getFollwer(Model model){
+
+        AppUser user = (AppUser) model.getAttribute("user");
+
+        return appUserRepo.getById(user.getId()).getFollowing();
+
+    }
 }

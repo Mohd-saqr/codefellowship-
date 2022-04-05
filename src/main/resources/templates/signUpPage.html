@@ -60,7 +60,7 @@
         <form action="/signUp" method="post" th:object="${AppUser}">
             <div class="field" >
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="username" required th:field="*{username}">
+                    <input class="input" type="text" placeholder="username" required th:field="*{username}" id="username" onchange='validInput();'>
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user"></i>
                       </span>
@@ -69,7 +69,7 @@
             </div>
             <div class="field" >
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="firstName" required th:field="*{firstName}">
+                    <input class="input" type="text" placeholder="firstName" required th:field="*{firstName}" id="firstName" onchange='validInput();'>
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user"></i>
                       </span>
@@ -78,7 +78,7 @@
             </div>
             <div class="field" >
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="lastName" required th:field="*{lastName}">
+                    <input class="input" type="text" placeholder="lastName" required th:field="*{lastName}" id="lastName" onchange='validInput();'>
                     <span class="icon is-small is-left">
                         <i class="fa-solid fa-user"></i>
                       </span>
