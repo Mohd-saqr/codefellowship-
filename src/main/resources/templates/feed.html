@@ -62,7 +62,7 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu" style="margin-top:10px ;">
               <div class="dropdown-content">
-                <a th:href="'/user/' + ${user?.user.id} " class="dropdown-item">
+                <a th:href="'/user/' + ${user?.id} " class="dropdown-item">
                   My profile
                 </a>
 
@@ -88,7 +88,8 @@
 <section class="section is-flex is-justify-content-center">
 
   <div class="container  is-medium">
-    <div class="container is-small"th:each="user1:${user.user?.following}">
+    <div class="container is-small"th:each="user1:${user?.following}">
+      <hr>
       <article class="media" th:each="post:${user1.posts}">
         <div class="media-left">
           <figure class="image is-64x64">
@@ -122,11 +123,20 @@
           </nav>
         </div>
       </article>
+
     </div>
 
   </div>
 
 </section>
+<script>
+    var dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function(event) {
+event.stopPropagation();
+dropdown.classList.toggle('is-active');
+});
+
+</script>
 
 </body>
 </html>

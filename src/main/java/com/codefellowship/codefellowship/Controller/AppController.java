@@ -100,14 +100,18 @@ public class AppController {
 
     @GetMapping("/follow/{userid}/{personId}")
     String follow(@PathVariable Long userid ,@PathVariable Long personId ,Model model){
-        if (services.followUser(userid,personId,model)) return "redirect:/home";
-        return "redirect:/home?err";
+        if (services.followUser(userid,personId,model)==1) return "redirect:/home";
+        else if (services.followUser(userid,personId,model)==-1)return "redirect:/home?err2"; // if the user try to follow yourself.
+        return "redirect:/home?err"; // if the user was following user before
     }
-     @Transactional
+
+    // see user friend posts
+    @Transactional
     @GetMapping("/feed")
     String PageFriend(Authentication authentication,Model model){
-        model.addAttribute("user",authentication.getPrincipal());
-        authentication.
+        model.addAttribute("user",services.findUserByUserName(authentication.getName()));
+
+
        return "feed";
     }
 

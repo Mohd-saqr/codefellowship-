@@ -101,10 +101,31 @@ and if the user try to sign up with same username have account.
 
 `http://localhost:8080/user/{id}` to show user information by id .
 
+---------------------------------------------------------------------------------------
 
+## Explained the app.
+ home page you can login or click on right on login on sign up to sign .
+![image](https://user-images.githubusercontent.com/97642724/162011126-e2798075-680a-4c66-9f0a-175bd8e5c603.png)
 
+example to sign in.
 
+![image](https://user-images.githubusercontent.com/97642724/162011720-980a7443-4a92-476b-8f1d-5e2de5871497.png)
 
+if you see this message you must use author username.
+![image](https://user-images.githubusercontent.com/97642724/162011972-e745d550-c1d3-4e83-a867-23093f166354.png)
 
+login page
 
+![image](https://user-images.githubusercontent.com/97642724/162012308-04f350c3-2930-49cb-9aa2-6f56b03a83c4.png)
 
+important
+when you login you will see this page
+![image](https://user-images.githubusercontent.com/97642724/162012461-7f1f0774-99dc-4099-9b22-21e8eed3c9f6.png)
+ in this page will see all users posts in app, and you can follow them 
+
+if you want to see page of some user just click in his name .
+![image](https://user-images.githubusercontent.com/97642724/162012856-b1d67c00-cde1-4d19-9650-268e808f924d.png)
+
+also see
+![image](https://user-images.githubusercontent.com/97642724/162013276-0b469678-917f-4aed-860a-ce5aafc08bdb.png)
+![image](https://user-images.githubusercontent.com/97642724/162013449-2d3f955e-2fc8-4b36-8b8a-996509c1ebc8.png)
