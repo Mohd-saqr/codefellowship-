@@ -93,9 +93,8 @@ public class AppController {
     // get user info by id
     @GetMapping("/user/{id}")
     String User(Model model, @PathVariable Long id) {
-
         services.findUser(id, model);
-        return "userPageInfo";
+        return "UserPageInfo";
     }
 
     @GetMapping("/follow/{userid}/{personId}")
@@ -110,8 +109,6 @@ public class AppController {
     @GetMapping("/feed")
     String PageFriend(Authentication authentication,Model model){
         model.addAttribute("user",services.findUserByUserName(authentication.getName()));
-
-
        return "feed";
     }
 

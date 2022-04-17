@@ -89,8 +89,8 @@ public class Services implements ServicesMethod {
 
         user.getFollowing().add(person);
         person.getFollower().add(user);
-        appUserRepo.save(user);
-        appUserRepo.save(person);
+//        appUserRepo.save(user);
+//        appUserRepo.save(person);
         return 1;
     }
 

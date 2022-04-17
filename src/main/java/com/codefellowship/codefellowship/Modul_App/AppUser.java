@@ -16,9 +16,11 @@ public class AppUser {
     private String lastName;
     private String dateOfBirth;
     private String bio;
+
     @OneToMany(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private List<Posts> posts;
-    @ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+
+    @ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
    @JoinTable(name = "FollowTable" ,joinColumns = {@JoinColumn(name = "followingId")},
    inverseJoinColumns = {@JoinColumn(name = "followerId")})
     private List<AppUser> following;
