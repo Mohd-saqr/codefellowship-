@@ -100,7 +100,7 @@
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-4" th:text="${user.firstName} +' ' + ${user.lastName}"></p>
+            <p class="title is-4" th:text="${user?.firstName} +' ' + ${user?.lastName}"></p>
             <p class="subtitle is-6" th:text=" '@'+${user?.username}"></p>
             <p class="subtitle is-6" th:text=" 'Born in: '+${user?.dateOfBirth}"></p>
 
@@ -136,10 +136,10 @@
       <div class="media-content" >
         <div class="content " >
           <p>
-            <strong th:text="${user.firstName} + ' ' + ${user.lastName}"></strong> <small
-                  th:text=" '@' + ${user.username}"></small> <small><time th:text="${post.createdAt}"></time></small>
+            <strong th:text="${user?.firstName} + ' ' + ${user?.lastName}"></strong> <small
+                  th:text=" '@' + ${user?.username}"></small> <small><time th:text="${post?.createdAt}"></time></small>
             <br>
-          <p th:text="${post.body}">
+          <p th:text="${post?.body}">
 
           </p>
           </p>
